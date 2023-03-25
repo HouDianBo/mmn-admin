@@ -1,0 +1,15 @@
+auth:
+  # 配置 Keycloak 的管理用户和密码
+  adminUser: admin
+  adminPassword: admin
+
+# 因为 Keycloak 部署在 Kubernetes 中，并且是通过 Ingress 访问，所以配置 proxy 为 edge
+# 参考： https://www.keycloak.org/server/reverseproxy
+proxy: edge
+
+ingress:
+  # 通过 Ingress 访问 Keycloak，默认域名是 keycloak.local，需要在 hosts 中配置
+  enabled: true
+  # k3s 默认的 Ingress 是 Traefik
+  # 使用 [Ingress Nginx](https://github.com/kubernetes/ingress-nginx) 的话，配置改成 nginx
+  ingressClassName: traefik
